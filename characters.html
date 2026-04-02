@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>人物介紹 - 現在的是哪一個多聞！？</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="title-with-music">
+            <!-- Logo 圖片 -->
+            <img id="site-logo" src="images/3.png" alt="現在的是哪一個多聞！？" width="250">
+            
+            <div class="music-icon" id="musicIcon">
+                <img id="music-note" src="images/2.png" alt="Music Note" width="90">
+                <audio id="bg-music" src="mp3/1.mp3" loop></audio>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">主頁</a></li>
+                <li><a href="story.html">故事介紹</a></li>
+                <li><a href="characters.html">人物介紹</a></li>
+                <li><a href="cd.html">CD</a></li>
+                <li><a href="bd.html">BD</a></li>
+                <li><a href="comic.html">漫畫</a></li>
+                <li><a href="magazine.html">雜誌</a></li>
+                <li><a href="pop-up.html">快閃店</a></li>
+                <li><a href="coffee.html">聯名咖啡廳</a></li>
+                <li><a href="ichiban.html">一番賞</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <div class="cards-container">
+        <div class="card character-card">
+            <h2>木下歌夏</h2>
+            <p>本作主角，17歲高二女生，生日11月21日，身高154cm，御宅族，忠實粉絲偶像福原多聞。因父母工作繁忙照顧雙胞胎弟妹，家務能力出色。為了追星應徵家事管理員，意外服務對象竟是多聞本人。</p>
+            <img src="images/5.jpg" alt="人物示意圖">
+        </div>
+        <div class="card character-card">
+            <h2>福原多聞</h2>
+            <p>F/ACE成員，團隊性感狂野擔當，18歲高三，生日6月12日，身高180cm。團隊王牌，以歌舞實力帶領團隊，目標讓全世界微笑。私下性格自卑陰沉，崇拜性格相反的哥哥，立志成為偶像。</p>
+            <img src="images/6.jpg" alt="人物示意圖">
+        </div>
+    </div>
+    </main>
+
+    <script>
+        const musicIcon = document.getElementById('musicIcon');
+        const bgMusic = document.getElementById('bg-music');
+
+        // 載入頁面時讀取上次進度
+        window.addEventListener('load', () => {
+            const savedTime = localStorage.getItem('bgMusicTime');
+            if (savedTime) {
+                bgMusic.currentTime = parseFloat(savedTime);
+            }
+        });
+
+        // 每秒存一次播放時間
+        setInterval(() => {
+            localStorage.setItem('bgMusicTime', bgMusic.currentTime);
+        }, 1000);
+
+        // 點擊圖示播放 / 暫停
+        musicIcon.addEventListener('click', () => {
+            if (bgMusic.paused) bgMusic.play();
+            else bgMusic.pause();
+        });
+        </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>聯名咖啡廳介紹 - 現在的是哪一個多聞！？</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="title-with-music">
+            <!-- Logo 圖片 -->
+            <img id="site-logo" src="images/3.png" alt="現在的是哪一個多聞！？" width="250">
+            
+            <div class="music-icon" id="musicIcon">
+                <img id="music-note" src="images/2.png" alt="Music Note" width="90">
+                <audio id="bg-music" src="mp3/1.mp3" loop></audio>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">主頁</a></li>
+                <li><a href="story.html">故事介紹</a></li>
+                <li><a href="characters.html">人物介紹</a></li>
+                <li><a href="cd.html">CD</a></li>
+                <li><a href="bd.html">BD</a></li>
+                <li><a href="comic.html">漫畫</a></li>
+                <li><a href="magazine.html">雜誌</a></li>
+                <li><a href="pop-up.html">快閃店</a></li>
+                <li><a href="coffee.html">聯名咖啡廳</a></li>
+                <li><a href="ichiban.html">一番賞</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <div class="card home-card">
+        <h2>《現在的是哪一個多聞！？》x</h2>
+        <h2>AMO CAFE 聯名主題咖啡廳</h2>
+        <img src="images/19.jpg" alt="聯名咖啡廳示意圖">
+    </div>
+    <script>
+        const musicIcon = document.getElementById('musicIcon');
+        const bgMusic = document.getElementById('bg-music');
+
+        // 載入頁面時讀取上次進度
+        window.addEventListener('load', () => {
+            const savedTime = localStorage.getItem('bgMusicTime');
+            if (savedTime) {
+                bgMusic.currentTime = parseFloat(savedTime);
+            }
+        });
+
+        // 每秒存一次播放時間
+        setInterval(() => {
+            localStorage.setItem('bgMusicTime', bgMusic.currentTime);
+        }, 1000);
+
+        // 點擊圖示播放 / 暫停
+        musicIcon.addEventListener('click', () => {
+            if (bgMusic.paused) bgMusic.play();
+            else bgMusic.pause();
+        });
+        </script>
+</body>
+</html>
